@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="js/jquery-2.0.3.js"></script>
+    <title>测试登录后获取用户树</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        var ws;
+        var _flag = 0;
+        var _count = 0;
+        var _handle;
+        function start(user) {
+            ws = new WebSocket("ws://localhost:4649/Test?user=" + user);
+            ws.onmessage = function (res) {
+                console.log(res.data);
+            }
+            ws.onopen = function () {
+                console.log("已开启测试...");
+                _flag = 1;
+                _handle = setInterval(function () {
+                    if (_flag) {
+                        var index = _count++;
+                        console.log("1#获取用户树:" + index);
+                        ws.send("1#获取用户树:" + index);
+                    }
+                }, 3000);
+            }
+            ws.onclose = function () {
+                if (_handle) {
+                    _flag = 0;
+                    clearInterval(_handle);
+                }
+                console.log("已关闭测试...");
+            }
+
+        }
+        function stop() {
+            if (_handle) {
+                _flag = 0;
+                clearInterval(_handle);
+                ws.close();
+            }
+        }
+    </script>
+</body>
+</html>

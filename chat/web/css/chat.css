@@ -1,0 +1,659 @@
+﻿
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+#login {
+    position: absolute;
+    width: 400px;
+    height: 350px;
+    border: 1px solid #ddd;
+    top: 50%;
+    left: 50%;
+    margin-top: -175px;
+    margin-left: -200px;
+    border-radius: 8px;
+    padding-top: 50px;
+    display: block;
+}
+
+.row {
+    height: 40px;
+    line-height: 40px;
+    text-align: left;
+    font-size: 18px;
+    margin: 30px;
+}
+
+    .row input {
+        height: 28px;
+        padding: 4px 0px 4px 10px;
+        border-radius: 4px;
+        width: 255px;
+        border: 1px solid #ddd;
+    }
+
+#userwin {
+    width: 275px;
+    height: 600px;
+    right:5px;
+    bottom:5px;
+    display: none;
+    background-repeat: no-repeat;
+    background-color: #F6F6F6;
+    border: 1px solid #D9D9D9;
+    border-color: rgba(0,0,0,.05);
+    border-radius: 2px;
+    box-shadow: 1px 1px 50px rgba(0,0,0,0.3);
+    background-image: url(../img/back.png);
+    position: fixed;
+    color: #333;
+}
+
+.win-header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 110px;
+}
+
+.win-content {
+    position: absolute;
+    top: 120px;
+    bottom: 37px;
+    width: 100%;
+    background: rgba(255,255,255,0.95);
+}
+
+.win-bottom {
+    position: absolute;
+    height: 37px;
+    bottom: 0;
+    width: 100%;
+    background-color: #F6F6F6;
+}
+
+.win-close {
+    cursor: pointer;
+    position: absolute;
+    top: 3px;
+    right: 2px;
+    height: 24px;
+    width: 24px;
+    z-index: 999;
+}
+
+.icon-close {
+    background-position: 1px -40px;
+    background-image: url(../img/icon.png);
+    background-repeat: no-repeat;
+    width: 16px;
+    height: 16px;
+    display: block;
+    margin: 4px;
+}
+
+    .icon-close:hover {
+        opacity: .7;
+    }
+
+.win-title {
+    position: absolute;
+    top: 15px;
+    left: 14px;
+    right: 20px;
+    height: 50px;
+    line-height: 27px;
+    cursor: move;
+}
+.win-title>.title-text>img{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+}
+.win-title>.title-text>#currUserName{
+    position:relative;
+    top:-5px;
+}
+
+.title-desc > input {
+    padding: 5px 2px 5px 2px;
+    border: 1px solid transparent;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 240px;
+    background: rgba(0,0,0,0);
+    color: #666;
+}
+
+    .title-desc > input:hover {
+        border-radius: 2px;
+        border: 1px solid #ddd;
+    }
+
+    .title-desc > input:focus {
+        background: #fff;
+    }
+
+.win-tabs {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+    .win-tabs > div {
+        top: 0;
+        bottom: 2px;
+        position: absolute;
+        text-align: center;
+        line-height: 35px;
+        width: 91px;
+        cursor: pointer;
+    }
+
+        .win-tabs > div:nth-child(1) {
+            left: 0;
+        }
+
+        .win-tabs > div:nth-child(2) {
+            left: 90px;
+        }
+
+        .win-tabs > div:nth-child(3) {
+            left: 182px;
+        }
+
+        .win-tabs > div > i {
+            font-size: 25px;
+            color: #666;
+        }
+
+            .win-tabs > div > i:hover {
+                color: #333;
+            }
+
+.layui-icon.active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -11px;
+    width: 100%;
+    height: 3px;
+    background-color: #3FDD86;
+}
+
+.win-bottom .bottom-module {
+    float: left;
+    width: 20%;
+    height: 100%;
+    text-align: center;
+    line-height: 38px;
+}
+
+    .win-bottom .bottom-module > i {
+        font-size: 22px;
+        cursor: pointer;
+    }
+
+.win-content > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#tabUser {
+    display: block;
+}
+
+.user-container {
+    margin-top: 10px;
+}
+
+.user-group-line {
+    cursor: pointer;
+    height: 25px;
+    line-height: 25px;
+    padding-left: 10px;
+}
+
+    .user-group-line > i {
+        font-size: 14px;
+        color: #999;
+    }
+
+.user-group-count {
+    color: #aaa;
+}
+
+.user-container .user {
+    position: relative;
+}
+
+    .user-container .user > img {
+        position: absolute;
+        left: 15px;
+        top: 8px;
+        width: 36px;
+        height: 36px;
+        border-radius: 100%;
+    }
+
+.user-group-container > ul {
+    display: none;
+}
+
+.user-container .user {
+    position: relative;
+    height: 42px;
+    padding: 5px 15px 5px 60px;
+    font-size: 0;
+    cursor: pointer;
+}
+
+    .user-container .user:hover {
+        background-color: #ddd;
+    }
+
+    .user-container .user > span {
+        margin-top: 4px;
+        max-width: 155px;
+        display: inline-block;
+        vertical-align: top;
+        font-size: 14px;
+    }
+
+    .user-container .user > p {
+        display: block;
+        padding-right: 30px;
+        line-height: 18px;
+        font-size: 12px;
+        color: #999;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .user-container .user > .user-news-count {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        width: 18px;
+        height: 18px;
+        color: #fff;
+        border-radius: 50%;
+        background-color: #f22828;
+        line-height: 20px;
+        text-align: center;
+        display: none;
+        font-size: 12px;
+    }
+
+.talk-win {
+    position: fixed;
+    width: 600px;
+    height: 520px;
+    top: 133px;
+    left: 400px;
+    box-shadow: 1px 1px 50px rgba(0,0,0,0.3);
+    background-image: url(../img/back.png);
+    background-size: cover;
+    background-color: #fff;
+    border: 1px solid #D9D9D9;
+    border-color: rgba(0,0,0,.05);
+    background-repeat: no-repeat;
+    border-radius: 2px;
+    box-shadow: 1px 1px 50px rgba(0,0,0,.3);
+    display: none;
+}
+
+.talk-header {
+    height: 80px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background-color: rgba(245,245,245,.7);
+    font-size: 14px;
+    color: #333;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: move;
+}
+
+.talk-content {
+    top: 80px;
+    position: absolute;
+    bottom: 160px;
+    background: 0 0;
+    overflow: auto;
+    background-color: rgba(255,255,255,.9);
+    padding: 15px 15px 5px;
+    right: 0;
+    left: 0;
+}
+
+.talk-edit {
+    height: 160px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    border-top: 1px solid #e1e1e1;
+    background-color: rgba(255,255,255,.85);
+}
+
+.talk-title {
+    position: relative;
+    top: 15px;
+    left: 15px;
+    padding-left: 60px;
+    cursor: default;
+    display: inline-block;
+}
+
+    .talk-title > img {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 50px;
+        height: 50px;
+        border-radius: 100%;
+    }
+
+    .talk-title > span {
+        position: relative;
+        top: 5px;
+        font-size: 18px;
+        color: #444;
+    }
+
+    .talk-title > p {
+        margin-top: 6px;
+        font-size: 14px;
+        color: #999;
+    }
+
+.talk-win-handle {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+}
+
+    .talk-win-handle > .icon-min {
+        display: inline-block;
+        position: relative;
+        width: 16px;
+        height: 16px;
+        margin-left: 10px;
+        font-size: 12px;
+        vertical-align: top;
+    }
+
+        .talk-win-handle > .icon-min > cite {
+            position: absolute;
+            width: 14px;
+            height: 2px;
+            left: 0;
+            top: 50%;
+            margin-top: -1px;
+            background-color: #2E2D3C;
+            cursor: pointer;
+        }
+
+        .talk-win-handle > .icon-min:hover > cite {
+            background-color: #2D93CA;
+        }
+
+    .talk-win-handle > .icon-max {
+        background: url(../img/icon.png) no-repeat;
+        display: inline-block;
+        position: relative;
+        width: 16px;
+        height: 16px;
+        margin-left: 10px;
+        font-size: 12px;
+        background-position: -32px -40px;
+        vertical-align: top;
+        color: #333;
+        text-decoration: none;
+    }
+
+        .talk-win-handle > .icon-max:hover {
+            background-position: -16px -40px;
+        }
+
+    .talk-win-handle > .icon-close {
+        display: inline-block;
+        margin-top: 0;
+    }
+
+.talk-edit > .talk-tool {
+    height: 38px;
+    padding: 0 8px;
+    line-height: 38px;
+}
+
+.talk-tool > span {
+    position: relative;
+    margin: 0 10px;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 24px;
+    cursor: pointer;
+    color: #777;
+}
+
+    .talk-tool > span > i {
+        font-size: 24px;
+        color: #777;
+    }
+
+    .talk-tool > span:last-child {
+        position: absolute;
+        right: 5px;
+        font-size: 14px;
+    }
+
+        .talk-tool > span:last-child > span {
+            position: relative;
+            top: -3px;
+            color: #555;
+        }
+
+.talk-edit .talk-text {
+    margin-left: 10px;
+}
+
+.talk-edit > .talk-op {
+    height: 46px;
+    position: relative;
+}
+
+.talk-edit .talk-text textarea {
+    display: block;
+    width: 100%;
+    padding: 5px 0 0;
+    height: 68px;
+    line-height: 20px;
+    border: none;
+    overflow: auto;
+    resize: none;
+    background: 0 0;
+}
+
+.talk-edit > .talk-op > .talk-btns > span {
+    display: inline-block;
+    vertical-align: top;
+    font-size: 14px;
+    line-height: 32px;
+    margin-left: 5px;
+    padding: 0 20px;
+    background-color: #5FB878;
+    color: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+    .talk-edit > .talk-op > .talk-btns > span:hover {
+        background-color: #69BC80;
+    }
+
+.talk-edit .talk-op .talk-btns {
+    position: absolute;
+    right: 15px;
+    top: 3px;
+    height: 32px;
+    line-height: 32px;
+    font-size: 0;
+    cursor: pointer;
+}
+
+.talk-msg {
+    position: relative;
+    font-size: 0;
+    margin-bottom: 10px;
+    padding-left: 60px;
+    min-height: 68px;
+}
+
+    .talk-msg > .talk-msg-user {
+        position: absolute;
+        left: 3px;
+        display: inline-block;
+        vertical-align: top;
+        font-size: 14px;
+    }
+
+    .talk-msg.talk-mine > .talk-msg-user {
+        left: auto;
+        right: 3px;
+    }
+
+    .talk-msg > .talk-msg-user > img {
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+    }
+
+    .talk-msg > .talk-msg-user > cite {
+        position: absolute;
+        left: 60px;
+        top: -2px;
+        width: 500px;
+        line-height: 24px;
+        font-size: 12px;
+        white-space: nowrap;
+        color: #999;
+        text-align: left;
+        font-style: normal;
+    }
+
+    .talk-msg.talk-mine > .talk-msg-user > cite {
+        left: auto;
+        right: 60px;
+        text-align: right;
+    }
+
+    .talk-msg > .talk-msg-user > cite i {
+        padding-left: 15px;
+        font-style: normal;
+    }
+
+    .talk-msg.talk-mine > .talk-msg-user > cite i {
+        padding-left: 0;
+        padding-right: 15px;
+    }
+
+    .talk-msg > .talk-msg-text {
+        position: relative;
+        line-height: 22px;
+        margin-top: 25px;
+        padding: 8px 15px;
+        background-color: #e2e2e2;
+        border-radius: 3px;
+        color: #333;
+        word-break: break-all;
+        vertical-align: top;
+        font-size: 14px;
+        display: inline-block;
+    }
+
+    .talk-msg.talk-mine > .talk-msg-text {
+        margin-left: 0;
+        text-align: left;
+        background-color: #5FB878;
+        color: #fff;
+    }
+
+    .talk-msg > .talk-msg-text::after {
+        content: '';
+        position: absolute;
+        left: -10px;
+        top: 13px;
+        width: 0;
+        height: 0;
+        border-style: solid dashed dashed;
+        border-color: #e2e2e2 transparent transparent;
+        overflow: hidden;
+        border-width: 10px;
+    }
+
+    .talk-msg.talk-mine > .talk-msg-text::after {
+        left: auto;
+        right: -10px;
+        border-top-color: #5FB878;
+    }
+
+    .talk-msg.talk-mine {
+        text-align: right;
+        padding-left: 0;
+        padding-right: 60px;
+    }
+/*复写flash动画*/
+@keyframes flash {
+  from,
+  70%,
+  to {
+    opacity: 1;
+  }
+  40% {
+    opacity: 1;
+  }
+  50%{
+      opacity:0;
+  }
+}
+/*右下角提示*/
+#userwin-min{
+    width:50px;
+    height:50px;
+    position:fixed;
+    right:5px;
+    bottom:5px;
+    z-index:999999999999999;
+    background-color:rgba(56,170,255,0.4);
+    cursor:pointer;
+    box-shadow: 1px 1px 50px rgba(0,0,0,.3);
+    text-align:center;
+    line-height:50px;
+}
+#userwin-min>i{
+    font-size: 38px;
+    color: #eee;
+}
+#userwin-min:hover{
+    background-color:rgba(56,170,255,1);
+}

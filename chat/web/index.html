@@ -1,0 +1,308 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="js/layui-v2.4.5/css/layui.css" rel="stylesheet" />
+    <link href="css/animate.css" rel="stylesheet" />
+    <link href="css/chat.css" rel="stylesheet" />
+
+    <script src="js/jquery-2.0.3.js"></script>
+    <script src="js/layui-v2.4.5/layui.all.js"></script>
+    <script src="js/chat.js"></script>
+    <!--<script src="js/test.js"></script>-->
+    <title>聊天室</title>
+</head>
+<body>
+    <div id="login">
+        <div class="row">
+            <span>用户名:</span>
+            <input type="text" id="username" value="test1" />
+        </div>
+        <div class="row">
+            <span>密&nbsp;&nbsp;&nbsp;&nbsp;码:</span>
+            <input type="password" id="password" value="1" />
+        </div>
+        <div class="row bottom">
+            <button class="layui-btn layui-btn-normal" style="width:100%;" onclick="login()">登录</button>
+        </div>
+    </div>
+    <div id="userwin">
+        <div class="win-header">
+            <div class="win-title">
+                <div class="title-text">
+                    <img id="currUserImg" src="img/user1.png" />
+                    <span id="currUserName">纸飞机</span>
+                </div>
+                <div class="title-desc">
+                    <input type="text" id="currUserDesc" value="在深邃的编码世界，做一枚轻盈的纸飞机" />
+                </div>
+            </div>
+            <div class="win-tabs">
+                <div onclick="toggleTab(this)" data-kind="user">
+                    <i class="layui-icon layui-icon-friends active" title="联系人"></i>
+                </div>
+                <div onclick="toggleTab(this)" data-kind="group">
+                    <i class="layui-icon layui-icon-group" title="群组"></i>
+                </div>
+                <div onclick="toggleTab(this)" data-kind="history">
+                    <i class="layui-icon layui-icon-reply-fill" title="历史会话"></i>
+                </div>
+            </div>
+            <div class="win-close">
+                <a href="javascript:void(0)" class="icon-close"></a>
+            </div>
+        </div>
+        <div class="win-content">
+            <div id="tabUser">
+                <ul class="user-container">
+                    <li class="user-group-container">
+                        <div class="user-group-line">
+                            <i class="layui-icon layui-icon-right"></i>
+                            <span class="user-group-text">知名人物</span>
+                            <span class="user-group-count">(5)</span>
+                        </div>
+                        <ul>
+                            <li class="user">
+                                <img src="img/user1.png" />
+                                <span>贤心</span>
+                                <p>这些都是测试数据，实际使用请严格按照该格式返回</p>
+                            </li>
+                            <li class="user">
+                                <img src="img/user2.png" />
+                                <span>刘小涛</span>
+                                <p>如约而至，不负姊妹欢乐颂</p>
+                            </li>
+                            <li class="user">
+                                <img src="img/user3.png" />
+                                <span>谢小楠</span>
+                                <p></p>
+                            </li>
+                            <li class="user">
+                                <img src="img/user4.png" />
+                                <span>马小云</span>
+                                <p>让天下没有难写的代码</p>
+                            </li>
+                            <li class="user">
+                                <img src="img/user5.png" />
+                                <span>徐小峥</span>
+                                <p>代码在囧途,也要写到底</p>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="user-group-container">
+                        <div class="user-group-line">
+                            <i class="layui-icon layui-icon-right"></i>
+                            <span class="user-group-text">网红声优</span>
+                            <span class="user-group-count">(3)</span>
+                        </div>
+                        <ul>
+                            <li class="user">
+                                <img src="img/user21.png" />
+                                <span>醋醋cucu</span>
+                                <p></p>
+                            </li>
+                            <li class="user">
+                                <img src="img/user22.png" />
+                                <span>大鱼_MsYuyu</span>
+                                <p>我瘋了！這也太準了吧  超級笑點低</p>
+                            </li>
+                            <li class="user">
+                                <img src="img/user23.png" />
+                                <span>Z_子晴</span>
+                                <p>微电商达人</p>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="user-group-container">
+                        <div class="user-group-line">
+                            <i class="layui-icon layui-icon-right"></i>
+                            <span class="user-group-text">女神艺人</span>
+                            <span class="user-group-count">(2)</span>
+                        </div>
+                        <ul>
+                            <li class="user">
+                                <img src="img/user21.png" />
+                                <span>佟小娅</span>
+                                <p>我爱贤心</p>
+                            </li>
+                            <li class="user">
+                                <img src="img/user22.png" />
+                                <span>王小贤</span>
+                                <p>我也爱贤心吖吖啊</p>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div id="tabGroup">
+                群组
+            </div>
+            <div id="tabHistory">
+                历史消息
+            </div>
+        </div>
+        <div class="win-bottom">
+            <div class="bottom-module">
+                <i class="layui-icon layui-icon-search" title="搜索"></i>
+            </div>
+            <div class="bottom-module">
+                <i class="layui-icon layui-icon-speaker" title="消息盒子"></i>
+            </div>
+            <div class="bottom-module">
+                <i class="layui-icon layui-icon-add-circle-fine" title="查找"></i>
+            </div>
+            <div class="bottom-module">
+                <i class="layui-icon layui-icon-refresh-1" title="刷新"></i>
+            </div>
+            <div class="bottom-module">
+                <i class="layui-icon layui-icon-about" title="关于"></i>
+            </div>
+        </div>
+    </div>
+    <div class="talk-win for-clone">
+        <div class="talk-header">
+            <div class="talk-title">
+                <img class="destUserImg" src="img/user1.png" />
+                <span class="destUserName">贤心</span>
+                <p class="destUserDesc">这个是测试的对话窗口</p>
+            </div>
+            <div class="talk-win-handle">
+                <a href="javascript:void(0)" class="icon-min" title="最小化"><cite></cite></a>
+                <a href="javascript:void(0)" class="icon-max" title="最大化"></a>
+                <a href="javascript:void(0)" class="icon-close" title="关闭"></a>
+            </div>
+        </div>
+        <div class="talk-content">
+            <ul>
+                <!--<li class="talk-msg">
+                    <div class="talk-msg-user">
+                        <img src="img/user1.png">
+                        <cite>纸飞机<i>2018-11-30 13:49:46</i></cite>
+                    </div>
+                    <div class="talk-msg-text">嗨，你好！欢迎体验LayIM。演示标记：1538099245943</div>
+                </li>
+                <li class="talk-msg talk-mine">
+                    <div class="talk-msg-user">
+                        <img src="img/user1.png">
+                        <cite><i>2018-11-30 13:49:46</i>纸飞机</cite>
+                    </div>
+                    <div class="talk-msg-text">嗨，你好！欢迎体验LayIM。演示标记：1538099245943</div>
+                </li>-->
+            </ul>
+        </div>
+        <div class="talk-edit">
+            <div class="talk-tool">
+                <span title="选择表情">
+                    <i class="layui-icon layui-icon-face-smile"></i>
+                </span>
+                <span title="发送图片">
+                    <i class="layui-icon layui-icon-picture-fine"></i>
+                </span>
+                <span title="发送文件">
+                    <i class="layui-icon layim-tool-image"></i>
+                </span>
+                <span title="发送网络音频">
+                    <i class="layui-icon layui-icon-headset"></i>
+                </span>
+                <span title="发送网络视频">
+                    <i class="layui-icon layui-icon-video"></i>
+                </span>
+                <span>
+                    <i class="layui-icon layui-icon-log"></i>
+                    <span>聊天记录</span>
+                </span>
+            </div>
+            <div class="talk-text">
+                <textarea></textarea>
+            </div>
+            <div class="talk-op">
+                <div class="talk-btns">
+                    <span class="talk-btns-close">关闭</span>
+                    <span class="talk-btns-send">发送</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="userwin-min">
+        <i class="layui-icon layui-icon-login-qq" title="打开主窗口"></i>
+    </div>
+    <script>
+        var layer = layui.layer;
+        function login() {
+            var username = $.trim($("#username").val());
+            var password = $.trim($("#password").val());
+            if (username == "" || password == "") {
+                layer.alert("请输入用户名和密码!");
+                return;
+            }
+            chat.login(username, password);
+        }
+
+        function toggleTab(item) {
+            $(".win-tabs i").removeClass("active");
+            $(item).find("i").addClass("active");
+            var kind = $(item).attr("data-kind");
+            $(".win-content>div").hide();
+            if (kind == "user") {
+                $("#tabUser").show();
+            } else if (kind == "group") {
+                $("#tabGroup").show();
+            } else if (kind == "history") {
+                $("#tabHistory").show();
+            }
+        }
+
+        $(function () {
+            //$("#login").hide();
+            //$(".talk-win").show();
+            //注册窗口拖动事件
+            $("#userwin .win-title").mousedown(function (evt) {
+                var dialog = $("#userwin");
+                var startx = evt.pageX;
+                var starty = evt.pageY;
+                var moveFunc = function (evt) {
+                    var startx2 = evt.pageX;
+                    var starty2 = evt.pageY;
+                    var dx = startx2 - startx;
+                    var dy = starty2 - starty;
+                    var bottom = parseInt(dialog.css("bottom")) - dy
+                    var right = parseInt(dialog.css("right")) - dx;
+                    startx = startx2;
+                    starty = starty2;
+                    if (bottom < 0 || right < 0) {
+                        //防止对话框移出
+                        return;
+                    }
+                    dialog.css({
+                        "bottom": bottom,
+                        "right": right
+                    })
+                }
+                var upFunc = function () {
+                    $(document).off('mousemove', moveFunc).off('mouseup', upFunc);
+                }
+                $(document).mousemove(moveFunc);
+                $(document).mouseup(upFunc);
+            });
+            //注册窗口关闭(隐藏)事件
+            $("#userwin>.win-header>.win-close").click(function () {
+                var win = $("#userwin");
+                var winmin = $("#userwin-min");
+                win.hide();
+                winmin.show();
+            });
+            //注册右下角点击事件
+            $("#userwin-min").click(function () {
+                var win = $("#userwin");
+                var winmin = $("#userwin-min");
+                win.show();
+                winmin.hide();
+            });
+            //注册主窗口底部工具点击事件
+            $("#userwin>.win-bottom>.bottom-module").click(function () { layer.msg("功能暂未实现!") });
+        });
+    </script>
+</body>
+</html>
