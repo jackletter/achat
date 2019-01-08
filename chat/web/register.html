@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="js/layui-v2.4.5/css/layui.css" rel="stylesheet" />
+    <link href="css/chat.css" rel="stylesheet" />
+
+    <script src="js/jquery-2.0.3.js"></script>
+    <script src="js/layui-v2.4.5/layui.all.js"></script>
+    <script src="js/chat.js"></script>
+    <title>注册</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="register">
+        <div class="row" style="text-align:center;font-size:16px;">
+            填写注册信息
+        </div>
+        <div class="row">
+            <span><font color="red">*</font>登录名</span>
+            <input id="LOGINNAME" />
+        </div>
+        <div class="row">
+            <span><font color="red">*</font>密码</span>
+            <input type="password" id="PWD" />
+        </div>
+        <div class="row">
+            <span><font color="red">*</font>确认密码</span>
+            <input type="password" id="PWD2" />
+        </div>
+        <div class="row">
+            <span><font color="red">*</font>昵称</span>
+            <input id="UNAME" />
+        </div>
+        <div class="row">
+            <span>性别</span>
+            <select id="USEX">
+                <option value="男">男</option>
+                <option value="女">女</option>
+            </select>
+        </div>
+        <div class="row">
+            <span>年龄</span>
+            <input id="UAGE" />
+        </div>
+        <div class="row">
+            <span>头像</span>
+            <select id="UIMG">
+                <option value="img/user1.png">img/user1.png</option>
+                <option value="img/user2.png">img/user2.png</option>
+                <option value="img/user3.png">img/user3.png</option>
+                <option value="img/user4.png">img/user4.png</option>
+            </select>
+        </div>
+        <div class="row">
+            <span>个性签名</span>
+            <textarea id="UDESC"></textarea>
+        </div>
+        <div class="row bottom">
+            <button class="layui-btn layui-btn-normal" style="width:98%;" onclick="register()">注册</button>
+        </div>
+    </div>
+    <script>
+        function register() {
+            var LOGINNAME = $.trim($("#LOGINNAME").val());
+            var PWD = $.trim($("#PWD").val());
+            var PWD2 = $.trim($("#PWD2").val());
+            var UNAME = $.trim($("#UNAME").val());
+            var USEX = $.trim($("#USEX").val());
+            var UAGE = $.trim($("#UAGE").val());
+            var UIMG = $.trim($("#UIMG").val());
+            var UDES = $.trim($("#UDESC").val());
+            if (LOGINNAME == ""
+                || PWD == ""
+                || PWD2 == ""
+                || UNAME == "") {
+                layer.alert("登录名、密码、昵称必填!");
+                return;
+            }
+            if (PWD != PWD2) {
+                layer.alert("两次输入的密码不一致!");
+                return;
+            }
+            if (UAGE != "") {
+                if (!/^[0-9]+$/.test(UAGE) || parseInt(UAGE) < 0) {
+                    layer.alert("请输入合法的年龄!");
+                    return;
+                }
+            }
+            var user = {
+                LOGINNAME: LOGINNAME,
+                PWD: PWD,
+                UNAME: UNAME,
+                USEX: USEX,
+                UAGE: UAGE,
+                UIMG: UIMG,
+                UDES: UDES,
+                ULOCATE: "110000",
+                ULOCATENAME: "北京"
+            }
+            $.ajax({
+                type: "post",
+                data: JSON.stringify(user),
+                async: true,
+                url: "api/register",
+                success: function (res) {
+                    res = JSON.parse(res);
+                    if (res.success) {
+                        window.location.href = "index.html?user=" + user.LOGINNAME;
+                    } else {
+                        layer.alert(res.data);
+                    }
+                },
+                error: function () {
+                    layer.alert("请求出错,请稍后再试!");
+                    layer.alert("请求出错,请稍后再试!", arguments);
+                }
+            })
+        }
+    </script>
+</body>
+</html>
