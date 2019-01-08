@@ -1,0 +1,9 @@
+.vs
+
+chat/obj
+
+chat/bin
+
+websocket-sharp/bin
+
+websocket-sharp/obj
