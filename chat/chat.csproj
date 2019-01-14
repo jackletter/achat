@@ -43,14 +43,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\MySql.Data.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Data.Entity, Version=6.6.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\MySql.Data.Entity.dll</HintPath>
-    </Reference>
-    <Reference Include="MySql.Web, Version=6.6.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\MySql.Web.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\Newtonsoft.Json.dll</HintPath>
@@ -58,10 +50,6 @@
     <Reference Include="Npgsql, Version=3.2.2.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\Npgsql.dll</HintPath>
-    </Reference>
-    <Reference Include="Oracle.DataAccess, Version=4.121.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\Oracle.DataAccess.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -83,11 +71,8 @@
   <ItemGroup>
     <Compile Include="BlockQueue.cs" />
     <Compile Include="Chat.cs" />
-    <Compile Include="Msg.cs" />
     <Compile Include="OnLineData.cs" />
     <Compile Include="Ext.cs" />
-    <Compile Include="MessageManager.cs" />
-    <Compile Include="MsgType.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util.cs" />
@@ -100,17 +85,17 @@
     <None Include="web\layui-v2.4.5.zip" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="init.sql" />
     <Content Include="lib\DBUtil.dll" />
     <Content Include="lib\MySql.Data.dll" />
-    <Content Include="lib\MySql.Data.Entity.dll" />
-    <Content Include="lib\MySql.Web.dll" />
     <Content Include="lib\Newtonsoft.Json.dll" />
     <Content Include="lib\Newtonsoft.Json.xml" />
     <Content Include="lib\Npgsql.dll" />
-    <Content Include="lib\Oracle.DataAccess.dll" />
     <Content Include="lib\SQLite.Interop.dll" />
     <Content Include="lib\System.Data.SQLite.dll" />
     <Content Include="lib\System.Threading.Tasks.Extensions.dll" />
+    <Content Include="web\forgetpwd.html" />
+    <Content Include="web\register.html" />
     <Content Include="web\css\animate.css" />
     <Content Include="web\css\chat.css" />
     <Content Include="web\img\back.png" />
@@ -238,6 +223,7 @@
     <Content Include="web\test3.html" />
     <Content Include="web\test4.html" />
     <Content Include="web\test5.html" />
+    <Content Include="说明.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\websocket-sharp\websocket-sharp.csproj">

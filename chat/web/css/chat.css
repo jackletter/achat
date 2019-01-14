@@ -23,27 +23,31 @@ html, body {
     display: block;
 }
 
-.row {
-    height: 40px;
-    line-height: 40px;
-    text-align: left;
-    font-size: 18px;
-    margin: 30px;
-}
+    #login .row {
+        height: 40px;
+        line-height: 40px;
+        text-align: left;
+        font-size: 18px;
+        margin: 30px;
+    }
 
-    .row input {
-        height: 28px;
-        padding: 4px 0px 4px 10px;
-        border-radius: 4px;
-        width: 255px;
-        border: 1px solid #ddd;
+        #login .row input {
+            height: 28px;
+            padding: 4px 0px 4px 10px;
+            border-radius: 4px;
+            width: 255px;
+            border: 1px solid #ddd;
+        }
+
+    #login a {
+        font-size: 14px;
     }
 
 #userwin {
     width: 275px;
     height: 600px;
-    right:5px;
-    bottom:5px;
+    right: 5px;
+    bottom: 5px;
     display: none;
     background-repeat: no-repeat;
     background-color: #F6F6F6;
@@ -79,6 +83,18 @@ html, body {
     background-color: #F6F6F6;
 }
 
+    .win-bottom .msg-count {
+        position: absolute;
+        top: -18px;
+        left: 69px;
+        width: 25px;
+        height: 25px;
+        background-color: rgba(51,223,131,0.8);
+        color: #fff;
+        line-height: 25px;
+        display: none;
+    }
+
 .win-close {
     cursor: pointer;
     position: absolute;
@@ -112,15 +128,17 @@ html, body {
     line-height: 27px;
     cursor: move;
 }
-.win-title>.title-text>img{
-    width:40px;
-    height:40px;
-    border-radius:50%;
-}
-.win-title>.title-text>#currUserName{
-    position:relative;
-    top:-5px;
-}
+
+    .win-title > .title-text > img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+    }
+
+    .win-title > .title-text > #currUserName {
+        position: relative;
+        top: -5px;
+    }
 
 .title-desc > input {
     padding: 5px 2px 5px 2px;
@@ -316,8 +334,11 @@ html, body {
     border-color: rgba(0,0,0,.05);
     background-repeat: no-repeat;
     border-radius: 2px;
-    box-shadow: 1px 1px 50px rgba(0,0,0,.3);
     display: none;
+}
+
+.talk-group.talk-win {
+    width: 800px;
 }
 
 .talk-header {
@@ -345,6 +366,67 @@ html, body {
     right: 0;
     left: 0;
 }
+
+.talk-group .talk-content {
+    right: 200px;
+}
+
+.talk-group .talk-right {
+    top: 80px;
+    position: absolute;
+    right: 0;
+    width: 200px;
+    bottom: 0;
+    background-color: rgba(255,255,255,.9);
+    border-left: 1px solid #ddd;
+}
+
+.talk-group .talk-edit {
+    position: absolute;
+    bottom: 0;
+    right: 200px;
+    left: 0;
+    width: auto;
+}
+
+.talk-group .talk-right > div {
+    margin: 8px;
+    font-size: 15px;
+}
+
+.talk-group .talk-right > ul > li {
+    padding-left: 10px;
+    margin-bottom: 8px;
+    cursor: pointer;
+}
+
+.talk-group .talk-right > ul {
+    overflow: auto;
+    overflow-x: hidden;
+    position: absolute;
+    bottom: 0;
+    top: 40px;
+    left: 0;
+    right: 0;
+}
+
+    .talk-group .talk-right > ul > li:hover {
+        background-color: #ddd;
+    }
+
+    .talk-group .talk-right > ul > li > img {
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+    }
+
+    .talk-group .talk-right > ul > li > span {
+        line-height: 25px;
+    }
+
+        .talk-group .talk-right > ul > li > span:nth-child(2) {
+            padding-left: 5px;
+        }
 
 .talk-edit {
     height: 160px;
@@ -624,36 +706,252 @@ html, body {
     }
 /*复写flash动画*/
 @keyframes flash {
-  from,
-  70%,
-  to {
-    opacity: 1;
-  }
-  40% {
-    opacity: 1;
-  }
-  50%{
-      opacity:0;
-  }
+    from, 70%, to {
+        opacity: 1;
+    }
+
+    40% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
 }
 /*右下角提示*/
-#userwin-min{
-    width:50px;
-    height:50px;
-    position:fixed;
-    right:5px;
-    bottom:5px;
-    z-index:999999999999999;
-    background-color:rgba(56,170,255,0.4);
-    cursor:pointer;
+#userwin-min {
+    display: none;
+    width: 50px;
+    height: 50px;
+    position: fixed;
+    right: 5px;
+    bottom: 5px;
+    z-index: 999999999999999;
+    background-color: rgba(56,170,255,0.4);
+    cursor: pointer;
     box-shadow: 1px 1px 50px rgba(0,0,0,.3);
-    text-align:center;
-    line-height:50px;
+    text-align: center;
+    line-height: 50px;
 }
-#userwin-min>i{
-    font-size: 38px;
-    color: #eee;
+
+    #userwin-min > i {
+        font-size: 38px;
+        color: #eee;
+    }
+
+    #userwin-min:hover {
+        background-color: rgba(56,170,255,1);
+    }
+/*注册框*/
+#register {
+    width: 450px;
+    height: 460px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -230px;
+    margin-left: -300px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 15px;
+    padding-top: 20px;
 }
-#userwin-min:hover{
-    background-color:rgba(56,170,255,1);
+
+    #register .row {
+        height: 40px;
+        line-height: 40px;
+    }
+
+        #register .row span {
+            display: block;
+            float: left;
+            width: 80px;
+            text-align: right;
+        }
+
+        #register .row input, #register .row select, #register .row textarea {
+            margin-left: 10px;
+            display: block;
+            float: left;
+            width: 330px;
+            height: 35px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding-left: 8px;
+            line-height: 25px;
+        }
+
+        #register .row select {
+            width: 340px;
+        }
+
+        #register .row textarea {
+            height: 60px;
+        }
+
+        #register .row.bottom {
+            margin-top: 30px;
+            text-align: center;
+        }
+/*查找窗口*/
+.userfind, .msgbox {
+    width: 700px;
+    height: 500px;
+    top: 50px;
+    left: 100px;
+    position: absolute;
+    box-shadow: 1px 1px 50px rgba(0,0,0,0.3);
+    background-size: cover;
+    background-color: #fff;
+    border: 1px solid #D9D9D9;
+    border-color: rgba(0,0,0,.05);
+    background-repeat: no-repeat;
+    border-radius: 2px;
+    display: none;
 }
+
+    .userfind .talk-header, .msgbox .talk-header {
+        height: 60px;
+    }
+
+    .msgbox .talk-header {
+        height: 40px;
+    }
+
+    .userfind .userfind-title, .msgbox .userfind-title {
+        position: relative;
+        top: 10px;
+        left: 10px;
+    }
+
+    .userfind .userfind-dest {
+        width: 200px;
+        height: 50px;
+        margin: 0 auto;
+        line-height: 35px;
+        cursor: default;
+    }
+
+        .userfind .userfind-dest > div {
+            float: left;
+            margin-right: 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+            .userfind .userfind-dest > div:hover {
+                color: #009BDB;
+            }
+
+            .userfind .userfind-dest > div.active {
+                font-weight: bold;
+            }
+
+                .userfind .userfind-dest > div.active:after {
+                    content: "";
+                    display: block;
+                    width: 30px;
+                    height: 30px;
+                    background-color: #fff;
+                    transform: rotateZ(45deg);
+                }
+
+    .userfind .userfind-user {
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
+    .userfind .userfind-filter > div {
+        float: left;
+        line-height: 35px;
+    }
+
+    .userfind .userfind-filter input {
+        height: 20px;
+        padding: 4px 0px 4px 10px;
+        border-radius: 4px;
+        width: 255px;
+        border: 1px solid #ddd;
+        margin: 15px 0 10px 15px;
+    }
+
+    .userfind .userfind-result {
+        margin-top: 60px;
+    }
+
+        .userfind .userfind-result ul li {
+            width: 150px;
+            height: 80px;
+            margin-left: 20px;
+            float: left;
+        }
+
+            .userfind .userfind-result ul li > img {
+                width: 65px;
+                height: 65px;
+                border-radius: 50%;
+            }
+
+            .userfind .userfind-result ul li > span {
+                position: relative;
+                top: -11px;
+                left: 8px;
+                font-size: 16px;
+            }
+
+            .userfind .userfind-result ul li > button {
+                position: relative;
+                top: -24px;
+                left: 75px;
+            }
+    /*消息盒子*/
+    .msgbox .msg-container {
+        position: absolute;
+        top: 40px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        overflow:auto;
+    }
+
+        .msgbox .msg-container ul li {
+            border-bottom: 1px solid #ddd;
+            padding: 10px;
+            position:relative;
+        }
+
+            .msgbox .msg-container ul li img {
+                position: absolute;
+                left: 0;
+                top: -4px;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+            }
+
+            .msgbox .msg-container ul li a {
+                position: relative;
+            }
+
+            .msgbox .msg-container ul li .msg-btns {
+                position: absolute;
+                right: 15px;
+                top: 12px;
+                color: #999;
+            }
+
+            .msgbox .msg-container ul li .msg-text {
+                margin-left: 60px;
+            }
+
+            .msgbox .msg-container ul li > .msg-text:nth-child(2) {
+                margin-bottom: 6px;
+            }
+
+            .msgbox .msg-container ul li .msg-text > span:nth-child(2) {
+                color: #999;
+                padding-left: 10px;
+            }

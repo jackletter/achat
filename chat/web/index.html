@@ -15,7 +15,8 @@
     <title>聊天室</title>
 </head>
 <body>
-    <div id="login">
+    <!--登录窗口-->
+    <div id="login" style="display:block">
         <div class="row">
             <span>用户名:</span>
             <input type="text" id="username" value="test1" />
@@ -26,8 +27,11 @@
         </div>
         <div class="row bottom">
             <button class="layui-btn layui-btn-normal" style="width:100%;" onclick="login()">登录</button>
+            <a href="register.html">注册</a>
+            <a href="forgetpwd.html">忘记密码</a>
         </div>
     </div>
+    <!--主面板-->
     <div id="userwin">
         <div class="win-header">
             <div class="win-title">
@@ -56,112 +60,36 @@
         </div>
         <div class="win-content">
             <div id="tabUser">
-                <ul class="user-container">
-                    <li class="user-group-container">
-                        <div class="user-group-line">
-                            <i class="layui-icon layui-icon-right"></i>
-                            <span class="user-group-text">知名人物</span>
-                            <span class="user-group-count">(5)</span>
-                        </div>
-                        <ul>
-                            <li class="user">
-                                <img src="img/user1.png" />
-                                <span>贤心</span>
-                                <p>这些都是测试数据，实际使用请严格按照该格式返回</p>
-                            </li>
-                            <li class="user">
-                                <img src="img/user2.png" />
-                                <span>刘小涛</span>
-                                <p>如约而至，不负姊妹欢乐颂</p>
-                            </li>
-                            <li class="user">
-                                <img src="img/user3.png" />
-                                <span>谢小楠</span>
-                                <p></p>
-                            </li>
-                            <li class="user">
-                                <img src="img/user4.png" />
-                                <span>马小云</span>
-                                <p>让天下没有难写的代码</p>
-                            </li>
-                            <li class="user">
-                                <img src="img/user5.png" />
-                                <span>徐小峥</span>
-                                <p>代码在囧途,也要写到底</p>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="user-group-container">
-                        <div class="user-group-line">
-                            <i class="layui-icon layui-icon-right"></i>
-                            <span class="user-group-text">网红声优</span>
-                            <span class="user-group-count">(3)</span>
-                        </div>
-                        <ul>
-                            <li class="user">
-                                <img src="img/user21.png" />
-                                <span>醋醋cucu</span>
-                                <p></p>
-                            </li>
-                            <li class="user">
-                                <img src="img/user22.png" />
-                                <span>大鱼_MsYuyu</span>
-                                <p>我瘋了！這也太準了吧  超級笑點低</p>
-                            </li>
-                            <li class="user">
-                                <img src="img/user23.png" />
-                                <span>Z_子晴</span>
-                                <p>微电商达人</p>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="user-group-container">
-                        <div class="user-group-line">
-                            <i class="layui-icon layui-icon-right"></i>
-                            <span class="user-group-text">女神艺人</span>
-                            <span class="user-group-count">(2)</span>
-                        </div>
-                        <ul>
-                            <li class="user">
-                                <img src="img/user21.png" />
-                                <span>佟小娅</span>
-                                <p>我爱贤心</p>
-                            </li>
-                            <li class="user">
-                                <img src="img/user22.png" />
-                                <span>王小贤</span>
-                                <p>我也爱贤心吖吖啊</p>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
+                <ul class="user-container"></ul>
             </div>
             <div id="tabGroup">
-                群组
+                <ul class="user-container"></ul>
             </div>
             <div id="tabHistory">
-                历史消息
+                <ul class="user-container"></ul>
             </div>
         </div>
         <div class="win-bottom">
-            <div class="bottom-module">
+            <div class="bottom-module" data-btn="search">
                 <i class="layui-icon layui-icon-search" title="搜索"></i>
             </div>
-            <div class="bottom-module">
+            <div class="bottom-module" data-btn="msgbox">
                 <i class="layui-icon layui-icon-speaker" title="消息盒子"></i>
+                <span class="msg-count">0</span>
             </div>
-            <div class="bottom-module">
+            <div class="bottom-module" data-btn="adduser">
                 <i class="layui-icon layui-icon-add-circle-fine" title="查找"></i>
             </div>
-            <div class="bottom-module">
+            <div class="bottom-module" data-btn="refresh">
                 <i class="layui-icon layui-icon-refresh-1" title="刷新"></i>
             </div>
-            <div class="bottom-module">
+            <div class="bottom-module" data-btn="about">
                 <i class="layui-icon layui-icon-about" title="关于"></i>
             </div>
         </div>
     </div>
-    <div class="talk-win for-clone">
+    <!--个人聊天窗口-->
+    <div class="talk-win talk-user for-clone">
         <div class="talk-header">
             <div class="talk-title">
                 <img class="destUserImg" src="img/user1.png" />
@@ -175,22 +103,7 @@
             </div>
         </div>
         <div class="talk-content">
-            <ul>
-                <!--<li class="talk-msg">
-                    <div class="talk-msg-user">
-                        <img src="img/user1.png">
-                        <cite>纸飞机<i>2018-11-30 13:49:46</i></cite>
-                    </div>
-                    <div class="talk-msg-text">嗨，你好！欢迎体验LayIM。演示标记：1538099245943</div>
-                </li>
-                <li class="talk-msg talk-mine">
-                    <div class="talk-msg-user">
-                        <img src="img/user1.png">
-                        <cite><i>2018-11-30 13:49:46</i>纸飞机</cite>
-                    </div>
-                    <div class="talk-msg-text">嗨，你好！欢迎体验LayIM。演示标记：1538099245943</div>
-                </li>-->
-            </ul>
+            <ul></ul>
         </div>
         <div class="talk-edit">
             <div class="talk-tool">
@@ -225,10 +138,165 @@
             </div>
         </div>
     </div>
+    <!--群组聊天窗口-->
+    <div class="talk-win talk-group for-clone">
+        <div class="talk-header">
+            <div class="talk-title">
+                <img class="destUserImg" src="img/user1.png" />
+                <span class="destUserName">贤心</span>
+                <p class="destUserDesc">这个是测试的对话窗口</p>
+            </div>
+            <div class="talk-win-handle">
+                <a href="javascript:void(0)" class="icon-min" title="最小化"><cite></cite></a>
+                <a href="javascript:void(0)" class="icon-max" title="最大化"></a>
+                <a href="javascript:void(0)" class="icon-close" title="关闭"></a>
+            </div>
+        </div>
+        <div class="talk-content">
+            <ul></ul>
+        </div>
+        <div class="talk-edit">
+            <div class="talk-tool">
+                <span title="选择表情">
+                    <i class="layui-icon layui-icon-face-smile"></i>
+                </span>
+                <span title="发送图片">
+                    <i class="layui-icon layui-icon-picture-fine"></i>
+                </span>
+                <span title="发送文件">
+                    <i class="layui-icon layim-tool-image"></i>
+                </span>
+                <span title="发送网络音频">
+                    <i class="layui-icon layui-icon-headset"></i>
+                </span>
+                <span title="发送网络视频">
+                    <i class="layui-icon layui-icon-video"></i>
+                </span>
+                <span>
+                    <i class="layui-icon layui-icon-log"></i>
+                    <span>聊天记录</span>
+                </span>
+            </div>
+            <div class="talk-text">
+                <textarea></textarea>
+            </div>
+            <div class="talk-op">
+                <div class="talk-btns">
+                    <span class="talk-btns-close">关闭</span>
+                    <span class="talk-btns-send">发送</span>
+                </div>
+            </div>
+        </div>
+        <div class="talk-right">
+            <div>群成员 <span></span></div>
+            <ul></ul>
+        </div>
+    </div>
+    <!--右下角图标-->
     <div id="userwin-min">
         <i class="layui-icon layui-icon-login-qq" title="打开主窗口"></i>
     </div>
+    <!--查找好友窗口-->
+    <div class="userfind">
+        <div class="talk-header">
+            <div class="userfind-title">
+                查找好友
+            </div>
+            <div class="talk-win-handle">
+                <a href="javascript:void(0)" class="icon-min" title="最小化"><cite></cite></a>
+                <a href="javascript:void(0)" class="icon-max" title="最大化"></a>
+                <a href="javascript:void(0)" class="icon-close" title="关闭"></a>
+            </div>
+            <div class="userfind-dest">
+                <div data-kind="user" class="active">找人</div>
+                <div data-kind="group">找群</div>
+            </div>
+        </div>
+        <div class="userfind-user">
+            <div class="userfind-filter">
+                <div>
+                    <input id="userfindText" placeholder="请输入用户账号或昵称..." />
+                </div>
+                <div>
+                    <button class="layui-btn layui-btn-normal" style="margin:10px;" id="userfindSearch">搜索</button>
+                </div>
+            </div>
+            <div class="userfind-result">
+                <ul>
+                    <li>
+                        <img src="img/user1.png" />
+                        <span>闲心</span>
+                        <button class="layui-btn layui-btn-xs">添加</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!--消息盒子-->
+    <div class="msgbox" style="display:none;">
+        <div class="talk-header">
+            <div class="userfind-title">
+                消息盒子
+            </div>
+            <div class="talk-win-handle">
+                <a href="javascript:void(0)" class="icon-min" title="最小化"><cite></cite></a>
+                <a href="javascript:void(0)" class="icon-max" title="最大化"></a>
+                <a href="javascript:void(0)" class="icon-close" title="关闭"></a>
+            </div>
+        </div>
+        <div class="msg-container">
+            <ul>
+                <li>
+                    <a href="#">
+                        <img src="img/user1.png" />
+                    </a>
+                    <p class="msg-text">
+                        <span>测试用户1</span>
+                        <span>2018-12-26</span>
+                    </p>
+                    <p class="msg-text">
+                        <span>申请添加你为好友</span>
+                        <span>附言:有问题要请教</span>
+                    </p>
+                    <p class="msg-btns">
+                        <button class="layui-btn layui-btn-small">同意</button>
+                        <button class="layui-btn layui-btn-small layui-btn-primary">拒绝</button>
+                    </p>
+                </li>
+                <li>
+                    <a href="#">
+                        <img src="img/user1.png" />
+                    </a>
+                    <p class="msg-text">
+                        <span>测试用户1</span>
+                        <span>2018-12-26</span>
+                    </p>
+                    <p class="msg-text">
+                        <span>申请添加你为好友</span>
+                        <span>附言:有问题要请教</span>
+                    </p>
+                    <p class="msg-btns">
+                        <button class="layui-btn layui-btn-small">同意</button>
+                        <button class="layui-btn layui-btn-small layui-btn-primary">拒绝</button>
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </div>
     <script>
+        function _para(key) {
+            var search = window.location.search || "";
+            if (search.indexOf("?") >= 0) {
+                var arr = search.split("&");
+                for (var i = 0; i < arr.length; i++) {
+                    var name = arr[i].split("=")[0];
+                    if (name = key) {
+                        return arr[i].split("=")[1];;
+                    }
+                }
+            }
+        }
+
         var layer = layui.layer;
         function login() {
             var username = $.trim($("#username").val());
@@ -257,6 +325,21 @@
         $(function () {
             //$("#login").hide();
             //$(".talk-win").show();
+            $("#username").keydown(function (evt) {
+                if (evt.keyCode == 13) {
+                    $("#password").focus();
+                }
+            });
+            $("#password").keydown(function (evt) {
+                if (evt.keyCode == 13) {
+                    login();
+                }
+            });
+            var loginuser = _para("user");
+            if (loginuser) {
+                $("#username").val(loginuser);
+                $("#password").val("");
+            }
             //注册窗口拖动事件
             $("#userwin .win-title").mousedown(function (evt) {
                 var dialog = $("#userwin");
@@ -300,8 +383,6 @@
                 win.show();
                 winmin.hide();
             });
-            //注册主窗口底部工具点击事件
-            $("#userwin>.win-bottom>.bottom-module").click(function () { layer.msg("功能暂未实现!") });
         });
     </script>
 </body>

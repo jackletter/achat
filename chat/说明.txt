@@ -1,0 +1,18 @@
+﻿通信规范
+双工通信-发起请求
+request /usermsg
+guid:12345
+key:4512
+
+{
+	"name":"xiaoming",
+	"age":20
+}
+双工通信-返回请求
+reply /usermsg
+guid:12345
+
+{
+	"success":true,
+	"data":"123"
+}

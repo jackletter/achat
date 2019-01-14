@@ -71,6 +71,7 @@ create table CHAT_USER_RELATION(
 	USERID1 int,--用户ID1,用户2是用户1的好友
 	USERID2 int,--用户ID2,
 	INNERGID int,--用户2在用户1的分组里
+	UREMARK varchar(50),--用户1对用户2的昵称备注
 	CREATETIME datetime--好友创建时间
 )
 

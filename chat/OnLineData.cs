@@ -17,15 +17,15 @@ namespace chat
 
         /// <summary>用户ID
         /// </summary>
-        public int UID { set; get; }
+        public int USERID { set; get; }
 
         /// <summary>用户昵称
         /// </summary>
-        public string UserName { set; get; }
+        public string UNAME { set; get; }
 
         /// <summary>用户登录名称
         /// </summary>
-        public string UserLoginName { set; get; }
+        public string LOGINNAME { set; get; }
 
         public DateTime StartTime { set; get; }
     }
