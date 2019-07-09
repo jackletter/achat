@@ -39,16 +39,19 @@
         return def;
     }
     chat.MsgPack = function (data) {
+        var linesplit = "\r\n";
         var index = data.indexOf("\r\n");
+        if (index == -1) linesplit = "\n";
+        index = data.indexOf(linesplit);
         var line = data.substring(0, index);
         this.type = line.split(" ")[0];
         this.path = line.split(" ")[1];
-        data = data.substring(index + 2);
-        index = data.indexOf("\r\n\r\n");
+        data = data.substring(index + linesplit.length);
+        index = data.indexOf(linesplit + linesplit);
         var head;
         if (index > 0) {
             head = data.substring(0, index);
-            var body = data.substring(index + 4);
+            var body = data.substring(index + linesplit.length);
             this.data = body;
             try {
                 this.data_json = JSON.parse(body);
@@ -56,7 +59,7 @@
         } else {
             head = data;
         }
-        head = head.split("\r\n");
+        head = head.split(linesplit);
         this.headers = {};
         for (var i = 0; i < head.length; i++) {
             this.headers[head[i].split(":")[0]] = head[i].split(":")[1];
